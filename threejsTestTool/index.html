@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>three.js Spatial Toolbox Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <script src="aframe.min.js"></script>
+    <!-- <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script> -->
+  </head>
+  <body>
+    <!-- Try changing the preset to one of default, contact, egypt, checkerboard, forest, goaland, yavapai, goldmine,
+         threetowers, poison, arches, tron, japan, dream, volcano, starry, osiris. -->
+    <!-- See more environment options: https://github.com/feiss/aframe-environment-component#parameters -->
+    <!-- <a-scene environment="preset: forest"> -->
+    <a-scene vr-mode-ui="enabled: false">
+      <a-assets>
+        <img id="boxTexture" src="mYmmbrp.jpg">
+      </a-assets>
+
+      <a-entity id="container">
+        <a-box
+          position="0 2 -400"
+          color="#00f"
+          rotation="0 45 45"
+          scale="20 20 20"
+          animation__position="property: object3D.position.z; to: 400; dir: alternate; dur: 5000; loop: true"></a-box>
+        <a-box
+          position="-400 2 -50"
+          rotation="0 45 45"
+          color="#f00"
+          scale="20 20 20"
+          animation__position="property: object3D.position.x; to: 400; dir: alternate; dur: 5000; loop: true"></a-box>
+        <a-box
+          src="#boxTexture"
+          position="0 -400 -50"
+          rotation="0 45 45"
+          scale="20 20 20"
+          animation__position="property: object3D.position.y; to: 400; dir: alternate; dur: 5000; loop: true"></a-box>
+
+        <a-entity text="value: Hello, A-Frame; color: #ffa400; width: 5; anchor: align" position="-0.9 0.2 -50" scale="80 80 80"></a-entity>
+      </a-entity>
+      <a-camera id="camera" fov="70" near="1" far="1000"
+        look-controls-enabled="false"
+        wasd-controls-enabled="false"
+        ></a-camera>
+    </a-scene>
+    <script src="main.js"></script>
+  </body>
+</html>
