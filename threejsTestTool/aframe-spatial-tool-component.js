@@ -5,20 +5,36 @@ AFRAME.registerComponent('spatial-tool', {
     this.aframeCamera = this.el.querySelector('a-camera');
     this.aframeContainer = this.el.querySelector('#container');
 
-    console.log('acam', this.aframeCamera);
-    console.log('acon', this.aframeContainer);
+    this.tryToLoadSpatialInterface(10);
 
-    let spatialInterface;
-    if (typeof SpatialInterface !== 'undefined') {
-      spatialInterface = new SpatialInterface();
+    window.addEventListener('resize', this.onResize.bind(this));
+  },
+
+  tryToLoadSpatialInterface: function(retries) {
+    if (retries < 0) {
+      console.log('Failed to load spatial interface');
+      return;
     }
+
+    if (typeof SpatialInterface === 'undefined') {
+      setTimeout(() => {
+        this.tryToLoadSpatialInterface(retries - 1);
+      }, 200);
+      return;
+    }
+
+    let spatialInterface = new SpatialInterface();
 
     if (spatialInterface) {
       spatialInterface.setFullScreenOn();
       spatialInterface.addMatrixListener(this.renderScene.bind(this));
-    }
 
-    window.addEventListener('resize', this.onResize.bind(this));
+      let rig = this.el.querySelector('#camera-rig');
+      if (rig) {
+        rig.setAttribute('position', '0 0 0');
+        rig.setAttribute('rotation', '0 0 0');
+      }
+    }
   },
 
   renderScene: function(modelViewMatrix, projectionMatrix) {

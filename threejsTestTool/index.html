@@ -19,31 +19,21 @@
       </a-assets>
 
       <a-entity id="container">
-        <a-box
-          position="0 2 -400"
-          color="#00f"
-          rotation="0 45 45"
-          scale="20 20 20"
-          animation__position="property: object3D.position.z; to: 400; dir: alternate; dur: 5000; loop: true"></a-box>
-        <a-box
-          position="-400 2 -50"
-          rotation="0 45 45"
-          color="#f00"
-          scale="20 20 20"
-          animation__position="property: object3D.position.x; to: 400; dir: alternate; dur: 5000; loop: true"></a-box>
-        <a-box
-          src="#boxTexture"
-          position="0 -400 -50"
-          rotation="0 45 45"
-          scale="20 20 20"
-          animation__position="property: object3D.position.y; to: 400; dir: alternate; dur: 5000; loop: true"></a-box>
-
-        <a-entity text="value: Hello, A-Frame; color: #ffa400; width: 5; anchor: align" position="-0.9 0.2 -50" scale="80 80 80"></a-entity>
+        <a-entity rotation="90 0 0">
+          <a-box position="-20 10 0" rotation="0 45 0" scale="20 20 20" color="#4CC3D9"></a-box>
+          <a-sphere position="0 25 -40" radius="25" color="#EF2D5E"></a-sphere>
+          <a-cylinder position="20 15 0" radius="10" height="30" color="#FFC65D"></a-cylinder>
+          <a-plane position="0 0 -20" rotation="-90 0 0" width="80" height="80" color="#7BC8A4"></a-plane>
+        </a-entity>
       </a-entity>
-      <a-camera id="camera" fov="70" near="1" far="1000"
-        look-controls-enabled="false"
-        wasd-controls-enabled="false"
-        ></a-camera>
+      <a-entity id="camera-rig"
+        position="0 -60 60"
+        rotation="60 0 0">
+        <a-camera id="camera" fov="70" near="1" far="1000"
+          look-controls-enabled="false"
+          wasd-controls-enabled="false"
+          ></a-camera>
+      </a-entity>
     </a-scene>
   </body>
 </html>
